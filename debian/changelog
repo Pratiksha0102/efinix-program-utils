@@ -1,0 +1,111 @@
+efinix-program-utils (1.0.0) UNRELEASED; urgency=medium
+
+  [ Pratiksha ]
+  * Initial release. (Closes: #XXXXXX)
+
+  [ djkabutar ]
+  * program: flashcp: use syscall to unload module
+  * program: flash_read: read flash to the fpga
+  * misc: add miscellaneous items
+
+  [ UtsavBalar1231 ]
+  * flashcp: Fix minor issues
+  * h2b: Fix error handling
+
+  [ djkabutar ]
+  * flashcp: remove direction for GPO
+  * flashcp: check if spi-rokchip loaded initially
+  * flashcp: direction support and proper exit conditions
+
+  [ UtsavBalar1231 ]
+  * efinix-program-utils: Run clang-format
+  * Makefile: Add clean command for built binaries
+  * Makefile: Fix flashcp conflict with mtd-utils
+  * efinix-program-utils: Remove dependency on mtd-utils common header
+  * h2b: Remove unused headers
+  * flashcp: Write a safe implementation for set_gpio_value
+  * flashcp: Add a NULL check for getenv
+  * flashcp: Extract helpers into header file
+  * read_from_flash: Use gpio_set_value from flashcp.h
+  * read_from_flash: Stop taking any arguments
+  * efinix-program-utils: Ignore built binaries from git
+  * h2b: Fix error handling for read line
+  * h2b: Use seek instead of re-opening the file
+  * h2b: Remove unused variable length
+  * flashcp: Use `__NR_delete_module` to unload module
+  * flashcp: Remove log_verbose while setting GPIO value
+  * flashcp: Fix memoryleak in gpio_direction
+  * flashcp: Fix set gpio direction for kernel version > 4.19
+  * flashcp: Minor bug fixes for userspace GPIO handling
+  * flashcp: Add retry mechanism for spi modprobe
+  * flashcp: Fix buffer overflow issue in gpio_set_direction
+  * flashcp: Handle write errors in gpio_export and gpio_unexport
+  * flashcp: Fix buffer overflow issue in gpio_set_value
+  * flashcp: Use clang for compilation
+  * flashcp: Simplify show_usage helper function
+  * flashcp: Add Vicharak Computers LLP copyright header
+  * flashcp: Extract the vicharak specific flash configuration into helper
+  * efinix-program-utils: Refactor Makefile clang and gcc support
+  * efinix-program-utils: Consolidate read_from_flash inside main
+  * efinix-program-utils: Consolidate main function into seperate main file
+  * flashcp: Remove unused variable `gpio_path`
+  * flashcp: Fix signed comparision between signed and unsigned long types
+  * flashcp: Properly unexport GPIO pin after gpio_set_value
+  * flashcp: Do not export already export gpio pin
+  * flashcp: Do not uexport already unexported gpio pin
+  * efinix-program-utils: Exit safely after showing usage menu for help command
+  * efinix-program-utils: Add help entry for read_from_flash command
+  * efinix-program-utils: Refactor vicharak flash configuration
+
+  [ djkabutar ]
+  * efinix-program-utils: main: add support for external cable mode
+  * gitignore: remove gitignore itself from the repo
+  * README: describe conditions for the usage
+  * program: flashcp: use syscall to unload module
+  * program: flash_read: read flash to the fpga
+  * misc: add miscellaneous items
+
+  [ UtsavBalar1231 ]
+  * flashcp: Fix minor issues
+  * h2b: Fix error handling
+
+  [ djkabutar ]
+  * flashcp: remove direction for GPO
+  * flashcp: check if spi-rokchip loaded initially
+  * flashcp: direction support and proper exit conditions
+
+  [ UtsavBalar1231 ]
+  * efinix-program-utils: Run clang-format
+  * Makefile: Add clean command for built binaries
+  * Makefile: Fix flashcp conflict with mtd-utils
+  * efinix-program-utils: Remove dependency on mtd-utils common header
+  * h2b: Remove unused headers
+  * flashcp: Write a safe implementation for set_gpio_value
+  * flashcp: Add a NULL check for getenv
+  * flashcp: Extract helpers into header file
+  * read_from_flash: Use gpio_set_value from flashcp.h
+  * read_from_flash: Stop taking any arguments
+  * efinix-program-utils: Ignore built binaries from git
+  * h2b: Fix error handling for read line
+  * h2b: Use seek instead of re-opening the file
+  * h2b: Remove unused variable length
+  * flashcp: Use `__NR_delete_module` to unload module
+  * flashcp: Remove log_verbose while setting GPIO value
+  * flashcp: Fix memoryleak in gpio_direction
+  * flashcp: Fix set gpio direction for kernel version > 4.19
+  * flashcp: Minor bug fixes for userspace GPIO handling
+  * flashcp: Add retry mechanism for spi modprobe
+  * flashcp: Fix buffer overflow issue in gpio_set_direction
+  * flashcp: Handle write errors in gpio_export and gpio_unexport
+  * flashcp: Fix buffer overflow issue in gpio_set_value
+  * flashcp: Use clang for compilation
+  * flashcp: Simplify show_usage helper function
+  * flashcp: Add Vicharak Computers LLP copyright header
+  * flashcp: Extract the vicharak specific flash configuration into helper
+  * efinix-program-utils: Refactor Makefile clang and gcc support
+  * efinix-program-utils: Consolidate read_from_flash inside main
+  * efinix-program-utils: Consolidate main function into seperate main file
+  * flashcp: Remove unused variable `gpio_path`
+  * flashcp: Fix signed comparision between signed and unsigned long types
+
+ -- Pratiksha <pratikshathanki2501@gmail.com>  Tue, 10 Oct 2023 12:36:25 +0530

@@ -1,0 +1,9 @@
+Source: efinix-program-utils
+Priority: optional
+Maintainer: Pratiksha <pratikshathanki2501@gmail.com>
+Build-Depends: build-essential, debhelper (>= 9)
+
+Package: efinix-program-utils
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: efinix program utils package.
