@@ -1,0 +1,53 @@
+name: vaaman-powermanagement
+on:
+  pull_request:
+  push:
+permissions:
+  contents: write
+jobs:
+  release:
+    name: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: ARM64 Docker build
+        uses: addnab/docker-run-action@v3
+        with:
+          image: utsavthecunt/vicharak-ubuntu:focal-latest
+          options: |
+            --platform linux/arm64
+            --volume ${{ runner.temp }}/cache:/cache
+            --volume ${{ github.workspace }}:/build
+            --workdir /build
+          run: |
+            dpkg-buildpackage -uc -us -a arm64
+            mv ../*.deb .
+      - name: Check if the latest version is releasable
+        run: |
+          version="$(dpkg-parsechangelog -S Version)"
+          echo "version=$version" >> $GITHUB_ENV
+          echo "changes<<EOF" >> $GITHUB_ENV
+          echo '```' >> $GITHUB_ENV
+          echo "$(dpkg-parsechangelog -S Changes)" >> $GITHUB_ENV
+          echo '```' >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+          if [[ -n "$(git tag -l "$version")" ]]
+          then
+            echo "distro=UNRELEASED" >> $GITHUB_ENV
+          else
+            echo "distro=$(dpkg-parsechangelog -S Distribution)" >> $GITHUB_ENV
+          fi
+          echo "$version" > VERSION
+      - name: Release
+        if: env.distro != 'UNRELEASED'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.version }}
+          name: ${{ env.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: |
+            ${{ github.workspace }}/*.deb
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+            
