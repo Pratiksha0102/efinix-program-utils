@@ -12,14 +12,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: ARM64 Docker build
-        uses: addnab/docker-run-action@v3
+        uses: uraimo/run-on-arch-action@v2
         with:
-          image: utsavthecunt/vicharak-ubuntu:focal-latest
-          options: |
-            --platform linux/arm64
-            --volume ${{ runner.temp }}/cache:/cache
-            --volume ${{ github.workspace }}:/build
-            --workdir /build
+          arch: aarch64
+          distro: ubuntu18.04
           run: |
             dpkg-buildpackage -uc -us -a arm64
             mv ../*.deb .
